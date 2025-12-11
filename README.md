@@ -1,8 +1,6 @@
 # bibliotecaapp (BACK-END)
 <h2>Check the front-end <a href='https://github.com/jpgercc/Django-Frontend-MTV'>here</a></h2>
 
-<a href='https://drive.google.com/drive/u/0/folders/1w9LtnXG0-5F2TAQ2sjCWCvN2RT4I_v6S'>DRIVE - TUTORIAIS</a>
-
 <details>
 
 <summary><b>TO DO</b></summary>
@@ -120,3 +118,4 @@ Apesar os mesmos atributos o diagrama acima não fica igual o da página base do
 <img width="788" height="955" alt="Image" src="https://github.com/user-attachments/assets/d43a6eb0-61fd-4b5f-9001-76e292f8d7e9" />
 
 </details>
+
