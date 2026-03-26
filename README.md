@@ -11,95 +11,90 @@ This Django REST back end models a campus-style library: it keeps track of users
 
 ```uml
 @startuml
-class Emprestimo {
-data_emprestimo: DateTime
-data_devolucao_prevista: DateTime
-data_devolucao_real: DateTime
+class Loan {
+loan_date: DateTime
+expected_return_date: DateTime
+actual_return_date: DateTime
 status: String
-renovacoes_realizadas: Integer
-max_renovacoes: Integer
--usuario: Usuario
--funcionario: Funcionario
--exemplar: Exemplar
+renewals_made: Integer
+max_renewals: Integer
+-user: User
+-staff: Staff
+-copy: Copy
 +toString()
 }
-class Usuario {
-nome: String
+class User {
+name: String
 email: String
-telefone: String
-endereco: String
-data_cadastro: DateTime
-ativo: Boolena
-total_emprestimos: Integer
-emprestimos_atrasados: Integer
-total_atrasos_historico: Integer
-data_ultimo_emprestimo: DateTime
-limite_emprestimos: Integer
+phone: String
+address: String
+registration_date: DateTime
+active: Boolean
+total_loans: Integer
+overdue_loans: Integer
+total_overdue_history: Integer
+last_loan_date: DateTime
+loan_limit: Integer
 +toString()
 }
-class Funcionario {
-nome: String
+class Staff {
+name: String
 email: String
-telefone: String
-cargo: String
-data_admissao: Date
-ativo: Boolean
--bilioteca: Biblioteca
+phone: String
+role: String
+hire_date: Date
+active: Boolean
+-library: Library
 +toString()
 }
-class Autor {
-nome: String
-nacionalidade: String
-data_nascimento: Date
-sexo: String
+class Author {
+name: String
+nationality: String
+birth_date: Date
+gender: String
 }
-class Editora {
-nome: String
+class Publisher {
+name: String
 cnpj: String
-endereco: String
-telefone: String
+address: String
+phone: String
 }
-class Exemplar {
-codigo_de_barras: String
-data_aquisicao: Date
-estado_conservacao: String
-localizacao: String
-disponivel: Boolean
-observacoes: Text
--biblioteca: Biblioteca
--livro: Livro
+class Copy {
+barcode: String
+acquisition_date: Date
+condition: String
+location: String
+available: Boolean
+notes: Text
+-library: Library
+-book: Book
 }
-class Livro {
+class Book {
 isbn: String
-titulo: String
-ano_publicacao: Integer
-edicao: String
-sinopse: Text
-capa_rul
--autor: Autor
--editora: Editora
+title: String
+publication_year: Integer
+edition: String
+synopsis: Text
+cover_url
+-author: Author
+-publisher: Publisher
 +toString()
 }
-class Biblioteca {
-nome: String
-endereco: String
-telefone: String
-catalogo: List<Livro>
+class Library {
+name: String
+address: String
+phone: String
+catalog: List<Book>
 +toString
 }
-
-Biblioteca *--> Funcionario
-Biblioteca *--> Exemplar
-
-Usuario *--> Emprestimo
-Funcionario *--> Emprestimo
-Exemplar *--> Emprestimo
-
-Livro *--> Exemplar
-
-Autor *--> Livro
-Editora *--> Livro
-
+Library *--> Staff
+Library *--> Copy
+User *--> Loan
+Staff *--> Loan
+Copy *--> Loan
+Book *--> Copy
+Author *--> Book
+Publisher *--> Book
 @enduml
 ```
 </details>
