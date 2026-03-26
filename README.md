@@ -121,11 +121,5 @@ python manage.py test
 ```
 All apps include the scaffolded `TestCase` import but no assertions yet, so tests currently pass trivially. Extend each `tests.py` when you need to verify business logic.
 
-## Limitations
-- The database backend is hardcoded to Oracle; switch `ENGINE`/env vars if you need PostgreSQL, SQLite, etc.
-- No authentication, permissions, or throttling are configured—every endpoint is open by default.
-- There is no pagination or filter backend in use yet even though `django-filter` is imported in `livro/views.py`.
-- Several models (e.g., `Exemplar.__str__`) have placeholders or bugs such as subtracting strings, so rendering those objects in the admin may raise a `TypeError` until `__str__` is fixed.
-- `Emprestimo` expects `data_devolucao` on every POST/PATCH call; the project does not auto-calculate due dates or renewals beyond the bare fields.
-- Image uploads through `Exemplar.foto_capa` need a configured `MEDIA_ROOT`/`MEDIA_URL` and storage backend.
-- Admin modules are empty, so register each model manually if you want admin management.
+<h2>Check the front-end <a href='https://github.com/jpgercc/Django-Frontend-MTV'>here</a></h2>
+
