@@ -5,6 +5,104 @@ This Django REST back end models a campus-style library: it keeps track of users
 
 <img width="1530" height="912" alt="Image" src="https://github.com/user-attachments/assets/4eea1534-1a18-4480-9d09-ca4626a7dad8">
 
+<details>
+
+<summary>CLASS DIAGRAM (UML IN ENGLISH)</summary>
+
+```uml
+@startuml
+class Emprestimo {
+data_emprestimo: DateTime
+data_devolucao_prevista: DateTime
+data_devolucao_real: DateTime
+status: String
+renovacoes_realizadas: Integer
+max_renovacoes: Integer
+-usuario: Usuario
+-funcionario: Funcionario
+-exemplar: Exemplar
++toString()
+}
+class Usuario {
+nome: String
+email: String
+telefone: String
+endereco: String
+data_cadastro: DateTime
+ativo: Boolena
+total_emprestimos: Integer
+emprestimos_atrasados: Integer
+total_atrasos_historico: Integer
+data_ultimo_emprestimo: DateTime
+limite_emprestimos: Integer
++toString()
+}
+class Funcionario {
+nome: String
+email: String
+telefone: String
+cargo: String
+data_admissao: Date
+ativo: Boolean
+-bilioteca: Biblioteca
++toString()
+}
+class Autor {
+nome: String
+nacionalidade: String
+data_nascimento: Date
+sexo: String
+}
+class Editora {
+nome: String
+cnpj: String
+endereco: String
+telefone: String
+}
+class Exemplar {
+codigo_de_barras: String
+data_aquisicao: Date
+estado_conservacao: String
+localizacao: String
+disponivel: Boolean
+observacoes: Text
+-biblioteca: Biblioteca
+-livro: Livro
+}
+class Livro {
+isbn: String
+titulo: String
+ano_publicacao: Integer
+edicao: String
+sinopse: Text
+capa_rul
+-autor: Autor
+-editora: Editora
++toString()
+}
+class Biblioteca {
+nome: String
+endereco: String
+telefone: String
+catalogo: List<Livro>
++toString
+}
+
+Biblioteca *--> Funcionario
+Biblioteca *--> Exemplar
+
+Usuario *--> Emprestimo
+Funcionario *--> Emprestimo
+Exemplar *--> Emprestimo
+
+Livro *--> Exemplar
+
+Autor *--> Livro
+Editora *--> Livro
+
+@enduml
+```
+</details>
 
 ## Requirements
 - Python 3.11+ (Django 5.2.8 requires modern Python)
