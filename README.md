@@ -1,4 +1,4 @@
-# Biblioteca API
+# Django-Backend-MTV
 
 ## Purpose
 This Django REST back end models a campus-style library: it keeps track of users, employees, libraries, copies, publications, and the loans that connect them. Each domain entity lives in its own Django app (autor, editora, livro, biblioteca, funcionario, exemplar, usuario, emprestimo) and is exposed through a `ModelViewSet`, so the project can power dashboards, portals, or mobile apps that need CRUD access to the catalog and circulation history.
